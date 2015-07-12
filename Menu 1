@@ -1,0 +1,95 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+void triangulo()
+{int b,h,a;
+	cout<<"Ingrese base: ";
+	cin>>b;
+	cout<<"Ingrese altura: ";
+	cin>>h;
+	a=(b*h)/2;
+	cout<<"su area es: "<<a;
+}
+
+void mayor()
+{	int a,b,c,mayor;
+	cout<<"ingrese primer numero: ";
+	cin>>a;
+	cout<<"ingrese segundo numero: ";
+	cin>>b;
+	cout<<"ingrese tercer numero: ";
+	cin>>c;
+	mayor=a;
+	if(b>mayor)
+		{mayor=b;
+		}
+	if(c>mayor)
+		{mayor=c;
+		}
+	cout<<"el mayor es: "<<mayor;
+}
+
+bool primo()
+{int i,n;
+bool k=true;
+cout<<"ingrese numero: ";
+cin>>n;
+for(i=2;i<n;i++)
+	{
+		if(n%i==0)
+		{k=false;
+		i=n;
+		}
+	}
+return k;
+}
+
+
+void main()
+{
+	int opcion;
+	do
+	{
+		cout<<"\tMENU\n";
+		cout<<"1.triangulo\n";
+		cout<<"2.mayor de tres\n";
+		cout<<"3.primo\n";
+		cout<<"0.salir\n";
+		cout<<"Introduzca opcion: ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: cout<<"1.triangulo\n";
+				triangulo();
+				getch();
+				break;
+
+		case 2:cout<<"2.mayor de tres\n";
+				mayor();
+				getch();
+				break;
+
+		case 3:cout<<"3.primo\n";
+			if(primo()==true)
+			{cout<<"es primo";
+			}
+			else
+				cout<<"no es primo";
+			getch();
+			break;
+
+		case 0: cout<<"salir";
+				break;
+
+		default: cout<<"opcion invalida";
+
+		}
+	system("cls");
+	}
+	while(opcion!=0);
+}
+
+
