@@ -1,0 +1,28 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+bool par(int n)
+{bool k=true;
+	if(n%2!=0)
+		k=false;
+	return k;
+}
+
+void main()
+{	float n;
+	int copia;
+	do
+	{cout<<"ingrese un numero entero: ";
+	cin>>n;
+	copia=n;
+	}
+	while(((n-copia)!=0)||(n<0));
+	if(par(n)==true)
+		cout<<"El numero es par!";
+	else
+		cout<<"El numero NO es par!";
+	getch();
+}
