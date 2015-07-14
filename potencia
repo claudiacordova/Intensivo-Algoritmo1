@@ -1,0 +1,25 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+int potencial(int b,int e)
+{
+	int i,p=1;
+	for(i=1;i<=e;i++)
+	{
+		p=p*b;
+	}
+	return p;
+}
+
+void main()
+{	int base,exp;
+	cout<<"ingrese base: ";
+	cin>>base;
+	cout<<"ingrese exponente: ";
+	cin>>exp;
+	cout<<"La potencia del numero es: "<<potencial(base,exp);
+	getch();
+}
