@@ -1,0 +1,43 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+int factorial(int n)
+{
+	int i,p=1;
+	for(i=1;i<=n;i++)
+	{
+		p=p*i;
+	}
+	return p;
+}
+
+int combinatoria(int n,int sub)
+{
+	int x;
+	x=factorial(n)/(factorial(sub)*factorial(n-sub));
+	return x;
+}
+
+void main()
+{	float a,b;
+	int copiaa,copiab;
+	do
+	{
+		cout<<"ingrese n: ";
+		cin>>a;
+		copiaa=a;
+	}
+	while(((a-copiaa)!=0)||(a<0));
+	do
+	{
+		cout<<"ingrese sub: ";
+		cin>>b;
+		copiab=b;
+	}
+	while(((b-copiab)!=0)||(b<0));
+	cout<<"El numero combinatorio es: "<<combinatoria(a,b);
+	getch();
+}
