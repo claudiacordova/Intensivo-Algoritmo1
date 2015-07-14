@@ -4,9 +4,10 @@
 
 using namespace std;
 
-int potencial(int b,int e)
+float potencial(float b,float e)
 {
-	int i,p=1;
+	
+	float i,p=1;
 	for(i=1;i<=e;i++)
 	{
 		p=p*b;
@@ -15,11 +16,18 @@ int potencial(int b,int e)
 }
 
 void main()
-{	int base,exp;
+{	float base,exp;
+	int copiae; 
 	cout<<"ingrese base: ";
 	cin>>base;
-	cout<<"ingrese exponente: ";
-	cin>>exp;
+	do
+	{
+		cout<<"ingrese exponente entero: ";
+		cin>>exp;
+		copiae=exp;
+	}
+	while(((exp-copiae)!=0)||(exp<0));
 	cout<<"La potencia del numero es: "<<potencial(base,exp);
 	getch();
 }
+
