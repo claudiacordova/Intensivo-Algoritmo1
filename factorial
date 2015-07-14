@@ -15,9 +15,14 @@ int factorial(int n)
 }
 
 void main()
-{	int n;
-	cout<<"ingrese un numero: ";
+{	float n;
+	int copia;
+	do
+	{cout<<"ingrese un numero entero: ";
 	cin>>n;
+	copia=n;
+	}
+	while(((n-copia)!=0)||(n<0));
 	cout<<"El factorial del numero es: "<<factorial(n);
 	getch();
 }
