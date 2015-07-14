@@ -1,0 +1,46 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+int mcd(int a,int b)
+{
+	while(a!=b)
+	{
+		if(a>b)
+			a=a-b;
+		if(b>a)
+			b=b-a;
+	}
+	return a;
+}
+
+int mcm(int a,int b)
+{	int c,respmcd,respmcm;
+	respmcd=mcd(a,b);
+	c=a*b;
+	respmcm=c/respmcd;
+	return respmcm;
+}
+
+void main()
+{	float a,b;
+	int copiaa,copiab;
+	do
+	{
+		cout<<"ingrese primer numero: ";
+		cin>>a;
+		copiaa=a;
+	}
+	while(((a-copiaa)!=0)||(a<0));
+	do
+	{
+		cout<<"ingrese segundo numero: ";
+		cin>>b;
+		copiab=b;
+	}
+	while(((b-copiab)!=0)||(b<0));
+	cout<<"El minimo comun multiplo es: "<<mcm(a,b);
+	getch();
+}
