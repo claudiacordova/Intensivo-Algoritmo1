@@ -1,0 +1,38 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+int mcd(int a,int b)
+{
+	while(a!=b)
+	{
+		if(a>b)
+			a=a-b;
+		if(b>a)
+			b=b-a;
+	}
+	return a;
+}
+
+void main()
+{	float a,b;
+	int copiaa,copiab;
+	do
+	{
+		cout<<"ingrese primer numero: ";
+		cin>>a;
+		copiaa=a;
+	}
+	while(((a-copiaa)!=0)||(a<0));
+	do
+	{
+		cout<<"ingrese segundo numero: ";
+		cin>>b;
+		copiab=b;
+	}
+	while(((b-copiab)!=0)||(b<0));
+	cout<<"El maximo comun divisor es: "<<mcd(a,b);
+	getch();
+}
