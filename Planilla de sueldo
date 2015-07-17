@@ -1,0 +1,70 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+void cargar(int cod[],float sb[],int n)
+{
+	for(int i=0;i<n;i++)
+	{
+	cout<<endl<<"ingresar codigo:";
+	cin>>cod[i];
+	cout<<endl<<"ingresar salario bruto:";
+	cin>>sb[i];
+	}
+}
+float salarioneto(float sb)
+{
+	if(sb<1480*2)
+	return (sb-(sb*0.12));
+	else
+	return (sb-(sb*0.12)-(sb*0.13));
+	
+}
+
+void mostrar(int cod[],float sb[],int n)
+{int c=0;
+float sn[50],s=0;
+	cout<<"N\tCODIGO\tSALARIO\tSALARIO NETO\n";
+	for(int i=0;i<n;i++)
+	{	c++;
+		sn[i]=salarioneto(sb[i]);
+		cout<<c<<"\t"<<cod[i]<<"\t"<<sb[i]<<"\t"<<sn[i]<<"\n";
+		s=s+sb[i];
+	}
+	cout<<"El promedio del salario bruto es: "<<s/c;
+}
+
+void ordenarcodigos(int cod[],float sb[],float sn[],int n)
+{int aux;
+for(int i=0;i<n-1;i++)
+	{for(int k=i+1;k<n;k++)
+		{if(cod[i]>cod[k])
+			{aux=cod[k];
+			cod[k]=cod[i];
+			cod[i]=aux;
+
+			aux=sb[k];
+			sb[k]=sb[i];
+			sb[i]=aux;
+
+			aux=sn[k];
+			sn[k]=sn[i];
+			sn[i]=aux;
+			}
+		}
+	}
+}
+
+
+void main()
+{int  cod[50],n;
+float sb[50],sn[50];
+	cout<<"ingresar el numero de empleados: ";
+	cin>>n;
+	cargar(cod,sb,n);
+	ordenarcodigos(cod,sb,sn,n);
+	mostrar(cod,sb,n);
+	getch();
+}
