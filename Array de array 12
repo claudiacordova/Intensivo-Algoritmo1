@@ -13,6 +13,21 @@ struct elem
 	string svec[MAX];
 };
 
+void cargarvecdevec(elem V[],int n);
+void llenar(elem M[fil][col],int n,elem V[MAX]);
+void mostrar(elem M[fil][col],int n);
+
+void main()
+{elem V[MAX],M[fil][col];
+int n;
+	cout<<"Ingrese tamaño del vector: ";
+	cin>>n;
+	cargarvecdevec(V,n);
+	llenar(M,n,V);
+	mostrar(M,n);
+	getch();
+}
+
 void cargarvecdevec(elem V[],int n)
 {int i,j;
 	for(i=0;i<n;i++)
@@ -53,15 +68,4 @@ void mostrar(elem M[fil][col],int n)
 		}
 	cout<<endl;
 	}
-}
-
-void main()
-{elem V[MAX],M[fil][col];
-int n;
-	cout<<"Ingrese tamaño del vector: ";
-	cin>>n;
-	cargarvecdevec(V,n);
-	llenar(M,n,V);
-	mostrar(M,n);
-	getch();
 }
