@@ -1,0 +1,88 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include <string>
+#include "stdlib.h"
+#define MAX 100
+
+using namespace std;
+
+struct telemento
+{
+	int svec[MAX];
+};
+
+void cargarvecdevec(telemento vec[],int n);
+void invertirtodo(telemento vec[],int n);
+void mostrarvecdevec(telemento vec[],int n);
+void invertir(int vec[],int n);
+
+void main()
+{	int opcion,n;
+	telemento vec[MAX];
+		cout<<"Ingrese tamaño del vector: ";
+		cin>>n;
+		cargarvecdevec(vec,n);
+		mostrarvecdevec(vec,n);
+		invertirtodo(vec,n);
+		mostrarvecdevec(vec,n);
+	getch();
+	}
+
+
+void cargarvecdevec(telemento vec[],int n)
+{int i,j;
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			cout<<"Ingrese elemento: ";
+			cin>>vec[i].svec[j];
+		}
+	}
+}
+
+void mostrarvecdevec(telemento vec[],int n)
+{int i,j;
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			cout<<vec[i].svec[j]<<" ";
+		}
+		cout<<"  ";
+	}
+	cout<<endl<<endl;
+}
+
+void invertir(int vec[],int n)
+{int i,aux;
+	for(i=0;i<n/2;i++)
+	{	aux=vec[i];
+		vec[i]=vec[n-1-i];
+		vec[n-1-i]=aux;
+	}
+}
+
+void invertirtodo(telemento vec[],int n)
+{int i,j,c=0,aux[100];
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			aux[c]=vec[i].svec[j];
+			c++;
+		}
+	}
+	invertir(aux,c);
+	c=0;
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			vec[i].svec[j]=aux[c];
+			c++;
+		}
+	}
+}
+
