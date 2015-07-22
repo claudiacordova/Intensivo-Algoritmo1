@@ -1,0 +1,39 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int costomensaje(string frase);
+
+void main()
+{string frase;
+	cout<<"Ingrese una frase: ";
+	getline(cin,frase);
+	cout<<"El costo del mensaje es: "<<costomensaje(frase);
+
+	getch();
+}
+
+int costomensaje(string frase)
+{	char a;
+	int tam,i,j=0;
+	tam=frase.length();
+	for(i=0;i<tam;i++)
+	{	a=frase[i];
+		if (((a >= 65) && (a <= 90)) || ((a >= 97) && (a <= 122)))
+			j = j +10;
+		else
+		{
+			if ((a >= 0) && (a <= 9))
+				j = j + 20;
+			else
+			{
+				if ((a == -92) || (a == -31) || (a == -23) || (a == -19) || (a == -13) || (a == -6))
+					j = j + 30;
+			}
+		}
+	}
+	return j;
+}
