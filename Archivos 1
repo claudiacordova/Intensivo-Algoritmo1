@@ -1,0 +1,75 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include<iomanip>
+
+using namespace std;
+
+struct personas
+{
+	int cod;
+	string nombre;
+	string apellido;
+	int telf;
+	string direccion;
+	string fechanac;
+};
+
+
+void agregarprod()
+{FILE *ptr;
+int i,n;
+personas reg;
+	ptr=fopen("personas.dat","wb");
+	cout<<"Cuantas personas desea ingresar: ";
+	cin>>n;
+	for(i=0;i<n;i++)
+	{	
+		cout<<"Introduzca codigo: ";
+		cin>>reg.cod;
+		cout<<"Introduzca nombre: ";
+		cin.ignore();
+		getline(cin,reg.nombre);
+		cout<<"Introduzca apellido: ";
+		getline(cin,reg.apellido);
+		cout<<"Introduzca telefono: ";
+		cin>>reg.telf;
+		cout<<"Introduzca direccion: ";
+		cin.ignore();
+		getline(cin,reg.direccion);
+		cout<<"Introduzca fecha de nacimiento: ";
+		getline(cin,reg.fechanac);
+		fwrite(&reg,sizeof(reg),1,ptr);
+	}
+	fclose(ptr);
+}
+
+void listarProductos()
+{FILE *ptr;
+personas reg;
+ptr=fopen("personas.dat","rb");
+	if(ptr!=NULL)
+	{	cout<<"CODIGO"<<setw(10)<<"NOMBRE"<<setw(13)<<"APELLIDO"<<setw(13)<<"TELEFONO"<<setw(13)<<"DIRECCION"<<setw(20)<<"FECHA NACIMIENTO"<<endl;
+		fread(&reg,sizeof(reg),1,ptr);
+		while(feof(ptr)==false)
+		{
+			cout<<reg.cod<<setw(13)<<reg.nombre<<setw(13)<<reg.apellido<<setw(13)<<reg.telf<<setw(15)<<reg.direccion<<setw(15)<<reg.fechanac<<endl;
+			fread(&reg,sizeof(reg),1,ptr);
+		}
+		fclose(ptr);
+	}
+	else
+	{
+		cout<<"No existe el archivo";
+		fclose(ptr);
+	}
+}
+
+void main()
+{
+	agregarprod();
+	listarProductos();	
+	getch();
+}
